@@ -1,10 +1,6 @@
-export interface IProduct {
-  id: number;
-  name: string;
-  image: string;
-}
+import { IProduct } from '../model';
 
-export const productsMock: IProduct[] = [
+const productsMock: IProduct[] = [
   {
     id: 1,
     name: 'Брелок - карабин для ключей JOBON',
@@ -51,3 +47,17 @@ export const productsMock: IProduct[] = [
     image: 'https://image.dev.cluster.kznexpess.com/bnlngg19dnrje17spjp0/original.jpg',
   },
 ];
+
+const Api = {
+  getProducts: async () => {
+    try {
+      return productsMock;
+    } catch (e: any) {
+      throw new Error('Failed to get list of products');
+    }
+  },
+
+  addToFavorite: async (id: number) => Promise.resolve(id),
+};
+
+export default Api;
